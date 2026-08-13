@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sachin Vishwakarma — AI Engineer</title>
+<meta name="description" content="Sachin Vishwakarma — AI Engineer with 5+ years building production ML systems, computer vision pipelines, and generative AI applications at scale.">
+<meta name="theme-color" content="#0A0E17">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sachin Vishwakarma — AI Engineer">
+<meta property="og:description" content="Production ML, computer vision, and Generative AI — from model training to serving millions of inferences.">
+<meta property="og:image" content="https://sachinv.github.io/og-image.png">
+<meta property="og:url" content="https://sachinv.github.io/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sachin Vishwakarma — AI Engineer">
+<meta name="twitter:description" content="Production ML, computer vision, and Generative AI — from model training to serving millions of inferences.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A0E17'/%3E%3Ctext x='50' y='68' font-family='monospace' font-size='60' font-weight='700' fill='%2300E5CC' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sachin Vishwakarma",
+  "jobTitle": "AI Engineer",
+  "url": "https://sachinv.github.io/",
+  "email": "mailto:sachinv1004@gmail.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "Pune", "addressCountry": "IN" },
+  "sameAs": ["https://www.linkedin.com/in/sachin-vishwakarma-a9242222a"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0A0E17;
+  --bg2: #0F1420;
+  --bg3: #141824;
+  --cyan: #00E5CC;
+  --cyan-dim: rgba(0,229,204,0.10);
+  --cyan-mid: rgba(0,229,204,0.35);
+  --white: #E8ECF4;
+  --muted: #8089A5;
+  --border: rgba(255,255,255,0.07);
+  --border-c: rgba(0,229,204,0.25);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+body.cursor-active { cursor: none; }
+
+/* CUSTOM CURSOR */
+#cursor {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  width: 12px; height: 12px;
+  background: var(--cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  mix-blend-mode: screen;
+}
+#cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 9998;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(0,229,204,0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.35s cubic-bezier(.25,.46,.45,.94),
+              height 0.35s cubic-bezier(.25,.46,.45,.94),
+              border-color 0.2s;
+}
+body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 6px; height: 6px; }
+body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring {
+  width: 56px; height: 56px; border-color: var(--cyan);
+}
+
+/* NOISE OVERLAY */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 1;
+  opacity: 0.025;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* PARTICLES BG */
+#particles-canvas {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  background: rgba(10,14,23,0.75);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transform: translateY(-100%);
+  animation: slideDown 0.8s 0.3s cubic-bezier(.16,1,.3,1) forwards;
+}
+@keyframes slideDown { to { transform: translateY(0); } }
+
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; color: var(--cyan); letter-spacing: 0.05em;
+}
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a {
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.03em;
+  transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--cyan);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s cubic-bezier(.16,1,.3,1);
+}
+.nav-links a:hover { color: var(--cyan); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* SCROLL PROGRESS */
+#scroll-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--cyan); z-index: 200;
+  transform-origin: left; transform: scaleX(0);
+  transition: transform 0.1s linear;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  position: relative; z-index: 2;
+}
+
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 3rem 5rem 5rem;
+}
+
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--cyan); letter-spacing: 0.15em;
+  text-transform: uppercase; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  opacity: 0; animation: fadeUp 0.7s 0.6s ease forwards;
+}
+.hero-tag::before {
+  content: ''; display: inline-block;
+  width: 0; height: 1px; background: var(--cyan);
+  animation: expandLine 0.6s 1.1s ease forwards;
+}
+@keyframes expandLine { to { width: 20px; } }
+
+.hero-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.03em; margin-bottom: 0.25rem;
+  overflow: hidden;
+}
+.hero-name .line {
+  display: block;
+  transform: translateY(110%);
+  animation: lineUp 0.9s cubic-bezier(.16,1,.3,1) forwards;
+}
+.hero-name .line:nth-child(1) { animation-delay: 0.7s; }
+.hero-name .line:nth-child(2) { animation-delay: 0.85s; }
+@keyframes lineUp { to { transform: translateY(0); } }
+
+.hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 300; color: var(--muted);
+  margin-bottom: 2rem; letter-spacing: -0.01em;
+  opacity: 0; animation: fadeUp 0.7s 1.1s ease forwards;
+}
+.hero-title span { color: var(--cyan); font-weight: 500; }
+
+/* TYPEWRITER */
+#typewriter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; color: var(--muted);
+  margin-bottom: 2rem;
+  min-height: 1.5em;
+  opacity: 0; animation: fadeUp 0.7s 1.3s ease forwards;
+}
+#typewriter::after {
+  content: '█';
+  color: var(--cyan);
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-desc {
+  font-size: 15px; color: var(--muted); line-height: 1.8;
+  max-width: 460px; margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.7s 1.5s ease forwards;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; align-items: center;
+  opacity: 0; animation: fadeUp 0.7s 1.7s ease forwards;
+}
+
+.btn-primary {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px; font-weight: 500;
+  background: var(--cyan); color: #0A0E17;
+  padding: 0.75rem 1.75rem; border-radius: 4px;
+  text-decoration: none; letter-spacing: 0.01em;
+  position: relative; overflow: hidden;
+  transition: transform 0.2s;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(255,255,255,0.2);
+  transform: translateX(-100%) skewX(-15deg);
+  transition: transform 0.5s ease;
+}
+.btn-primary:hover::before { transform: translateX(120%) skewX(-15deg); }
+.btn-primary:hover { transform: translateY(-1px); }
+
+.btn-ghost {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--muted);
+  text-decoration: none; letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border); padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-ghost:hover { color: var(--white); border-color: var(--white); }
+
+/* PIPELINE CANVAS */
+.hero-right {
+  display: flex; align-items: center; justify-content: center;
+  padding: 5rem 4rem 5rem 2rem; position: relative;
+  opacity: 0; animation: fadeIn 1.2s 1s ease forwards;
+}
+#pipeline-canvas { width: 100%; max-width: 480px; height: 420px; }
+
+/* COMPANION SPRITE — follows cursor/touch anywhere on the page */
+#buddy {
+  position: fixed; top: 0; left: 0; z-index: 150;
+  pointer-events: none; will-change: transform;
+  transform: translate(-50%, -50%);
+}
+#buddy svg { display: block; }
+#buddy.excited #buddy-body { filter: drop-shadow(0 0 6px rgba(0,229,204,0.5)); }
+
+/* SCAN BEAM — laser line from buddy's eyes to whatever it's "excited" about */
+#scan-beam {
+  position: fixed; inset: 0; width: 100vw; height: 100vh;
+  z-index: 145; pointer-events: none;
+}
+#scan-beam line {
+  stroke: var(--cyan);
+  stroke-width: 1;
+  stroke-linecap: round;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  filter: drop-shadow(0 0 3px rgba(0,229,204,0.8));
+}
+#scan-beam.active line {
+  opacity: 0.55;
+  stroke-dasharray: 3 5;
+  animation: scanDash 0.6s linear infinite;
+}
+@keyframes scanDash { to { stroke-dashoffset: -16; } }
+
+/* TARGET-LOCK BRACKETS — HUD-style corner brackets on the scanned element */
+#lock-brackets {
+  position: fixed; top: 0; left: 0; z-index: 146; pointer-events: none;
+  opacity: 0; transition: opacity 0.2s ease;
+}
+#lock-brackets.active { opacity: 1; }
+.lock-bracket {
+  position: absolute; top: 0; left: 0; width: 16px; height: 16px;
+  border: 1.5px solid var(--cyan);
+  filter: drop-shadow(0 0 4px rgba(0,229,204,0.6));
+  transition: transform 0.35s cubic-bezier(.16,1,.3,1);
+  will-change: transform;
+}
+.lock-bracket.tl { border-right: none; border-bottom: none; }
+.lock-bracket.tr { border-left: none; border-bottom: none; }
+.lock-bracket.bl { border-right: none; border-top: none; }
+.lock-bracket.br { border-left: none; border-top: none; }
+#lock-label {
+  position: absolute; top: 0; left: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--cyan); white-space: nowrap;
+  opacity: 0.85;
+  will-change: transform;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(.16,1,.3,1),
+              transform 0.8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* SECTION COMMON */
+section { padding: 6rem 5rem; position: relative; z-index: 2; scroll-margin-top: 90px; }
+.section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--cyan); letter-spacing: 0.15em;
+  text-transform: uppercase; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.section-label::before {
+  content: ''; display: inline-block;
+  width: 20px; height: 1px; background: var(--cyan);
+}
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
+  letter-spacing: -0.03em; margin-bottom: 3rem; line-height: 1.1;
+}
+
+/* EXPERIENCE */
+.experience-section { background: var(--bg2); }
+.exp-list { display: flex; flex-direction: column; }
+
+.exp-item {
+  display: grid; grid-template-columns: 220px 1fr;
+  gap: 3rem; padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  transition: border-color 0.4s;
+  position: relative;
+}
+.exp-item::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; top: 0;
+  background: linear-gradient(90deg, rgba(0,229,204,0.03) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.4s; pointer-events: none;
+}
+.exp-item:hover { border-color: var(--border-c); }
+.exp-item:hover::after { opacity: 1; }
+.exp-item:last-child { border-bottom: 1px solid var(--border); }
+
+.exp-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.5rem;
+}
+.exp-company {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem;
+}
+.exp-location { font-size: 12px; color: var(--muted); }
+.exp-role {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 500; color: var(--cyan); margin-bottom: 1rem;
+}
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-bullets li {
+  font-size: 14px; color: var(--muted); line-height: 1.65;
+  padding-left: 1rem; position: relative;
+  transition: color 0.2s;
+}
+.exp-item:hover .exp-bullets li { color: #8a95b0; }
+.exp-bullets li::before {
+  content: '›'; position: absolute; left: 0;
+  color: var(--cyan); font-weight: 600;
+}
+.exp-bullets li strong { color: var(--white); font-weight: 500; }
+
+/* SKILLS */
+.skills-section { background: var(--bg); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.skill-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.75rem;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.skill-card::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(0,229,204,0.06) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.skill-card:hover { border-color: var(--border-c); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.skill-card:hover::before { opacity: 1; }
+
+.skill-card-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--cyan); letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 1rem;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--muted);
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: 3px; padding: 4px 10px;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  cursor: default;
+}
+.skill-tag:hover { color: var(--cyan); border-color: var(--border-c); background: var(--cyan-dim); }
+
+/* PROJECTS */
+.projects-section { background: var(--bg2); }
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+.project-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 2rem;
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.project-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--cyan);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s cubic-bezier(.16,1,.3,1);
+}
+.project-card::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(0,229,204,0.05), transparent 70%);
+  opacity: 0; transition: opacity 0.4s;
+}
+.project-card:hover { border-color: var(--border-c); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+.project-card:hover::before { transform: scaleX(1); }
+.project-card:hover::after { opacity: 1; }
+
+.project-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--cyan); letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 0.75rem;
+  position: relative; z-index: 1;
+}
+.project-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.3;
+  position: relative; z-index: 1;
+}
+.project-desc {
+  font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 1.25rem;
+  position: relative; z-index: 1;
+}
+.project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; position: relative; z-index: 1; }
+.stack-pill {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--cyan);
+  background: var(--cyan-dim); border: 1px solid var(--border-c);
+  border-radius: 20px; padding: 3px 10px;
+  transition: background 0.2s;
+}
+.stack-pill:hover { background: rgba(0,229,204,0.2); }
+
+.project-links { margin-top: 1.25rem; position: relative; z-index: 1; }
+.project-link {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: var(--cyan); text-decoration: none; letter-spacing: 0.03em;
+  border-bottom: 1px solid transparent; transition: border-color 0.2s;
+}
+.project-link:hover { border-color: var(--cyan); }
+.project-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--muted); letter-spacing: 0.02em;
+}
+
+/* CONTACT */
+.contact-section { background: var(--bg); }
+.contact-inner { max-width: 600px; }
+.contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+.contact-link {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 6px; text-decoration: none; color: var(--white);
+  transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  position: relative; overflow: hidden;
+}
+.contact-link::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--cyan);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+.contact-link:hover { border-color: var(--border-c); background: rgba(0,229,204,0.04); transform: translateX(4px); }
+.contact-link:hover::before { transform: scaleY(1); }
+
+.contact-link-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted);
+  letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 2px;
+}
+.contact-link-val { font-size: 14px; color: var(--white); }
+.contact-link-icon { margin-left: auto; color: var(--muted); font-size: 18px; transition: transform 0.2s, color 0.2s; }
+.contact-link:hover .contact-link-icon { transform: translate(2px, -2px); color: var(--cyan); }
+
+/* FOOTER */
+footer {
+  padding: 2rem 5rem; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  position: relative; z-index: 2;
+}
+footer p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--muted); letter-spacing: 0.05em;
+}
+
+/* GLITCH TEXT EFFECT */
+.glitch {
+  position: relative; display: inline-block;
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0;
+  font-family: inherit; font-size: inherit; font-weight: inherit;
+  letter-spacing: inherit; color: inherit;
+}
+.glitch::before {
+  color: rgba(0,229,204,0.7);
+  animation: glitch1 4s infinite linear;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+.glitch::after {
+  color: rgba(255,100,100,0.5);
+  animation: glitch2 4s infinite linear;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+@keyframes glitch1 {
+  0%,90%,100% { transform: none; opacity: 0; }
+  91% { transform: translate(-2px, 1px); opacity: 0.8; }
+  93% { transform: translate(2px, -1px); opacity: 0.8; }
+  95% { transform: translate(-1px, 2px); opacity: 0; }
+}
+@keyframes glitch2 {
+  0%,90%,100% { transform: none; opacity: 0; }
+  92% { transform: translate(2px, 1px); opacity: 0.7; }
+  94% { transform: translate(-2px, -1px); opacity: 0.7; }
+  96% { transform: translate(1px, 2px); opacity: 0; }
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  body { cursor: auto; }
+  #cursor, #cursor-ring { display: none; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1.25rem; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 4rem 1.5rem 3rem; }
+  section { padding: 4rem 1.5rem; }
+  .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .projects-grid { grid-template-columns: 1fr; }
+  footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="scroll-bar"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="particles-canvas"></canvas>
+
+<!-- COMPANION SPRITE -->
+<div id="buddy" aria-hidden="true">
+  <svg viewBox="0 0 40 60" width="36" height="54">
+    <g id="buddy-body">
+      <!-- Boxy Head & Torso -->
+      <path d="M 6 12 L 34 12 L 36 28 L 4 28 Z" fill="#0F1420" stroke="#00E5CC" stroke-width="1.5" stroke-linejoin="round"/>
+      <rect x="8" y="15" width="24" height="10" rx="2" fill="#141824" stroke="rgba(0,229,204,0.4)" stroke-width="1"/>
+      
+      <!-- Neck & Angled Torso -->
+      <rect x="17" y="28" width="6" height="4" fill="#0F1420" stroke="#00E5CC" stroke-width="1"/>
+      <path d="M 12 32 L 28 32 L 24 45 L 16 45 Z" fill="#0F1420" stroke="#00E5CC" stroke-width="1.5" stroke-linejoin="round"/>
+      
+      <!-- Pupils -->
+      <circle id="buddy-pupil-l" cx="13" cy="21" r="2" fill="#00E5CC"/>
+      <circle id="buddy-pupil-r" cx="27" cy="21" r="2" fill="#00E5CC"/>
+      
+      <!-- Eyelids -->
+      <rect id="buddy-lid-l" x="9" y="16.5" width="8" height="0" fill="#0F1420"/>
+      <rect id="buddy-lid-r" x="23" y="16.5" width="8" height="0" fill="#0F1420"/>
+
+      <!-- Left Arm (Pivot at 12, 34) -->
+      <g id="buddy-arm-l" style="transform-origin: 12px 34px;">
+        <path d="M 12 34 L 5 40 L 5 48" fill="none" stroke="#00E5CC" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="5" cy="48" r="2" fill="#0F1420" stroke="#00E5CC" stroke-width="1"/>
+      </g>
+      
+      <!-- Right Arm (Pivot at 28, 34) -->
+      <g id="buddy-arm-r" style="transform-origin: 28px 34px;">
+        <path d="M 28 34 L 35 40 L 35 48" fill="none" stroke="#00E5CC" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="35" cy="48" r="2" fill="#0F1420" stroke="#00E5CC" stroke-width="1"/>
+      </g>
+      
+      <!-- Left Leg (Pivot at 18, 45) -->
+      <g id="buddy-leg-l" style="transform-origin: 18px 45px;">
+        <line x1="18" y1="45" x2="16" y2="52" stroke="#00E5CC" stroke-width="2"/>
+        <path d="M 12 52 L 18 52 L 18 56 L 12 56 Z" fill="#0F1420" stroke="#00E5CC" stroke-width="1"/>
+      </g>
+      
+      <!-- Right Leg (Pivot at 22, 45) -->
+      <g id="buddy-leg-r" style="transform-origin: 22px 45px;">
+        <line x1="22" y1="45" x2="24" y2="52" stroke="#00E5CC" stroke-width="2"/>
+        <path d="M 22 52 L 28 52 L 28 56 L 22 56 Z" fill="#0F1420" stroke="#00E5CC" stroke-width="1"/>
+      </g>
+    </g>
+  </svg>
+</div>
+
+<!-- SCAN BEAM (twin lasers from buddy's eyes to hovered element's corners) -->
+<svg id="scan-beam" aria-hidden="true">
+  <line id="scan-beam-line-l" x1="0" y1="0" x2="0" y2="0"/>
+  <line id="scan-beam-line-r" x1="0" y1="0" x2="0" y2="0"/>
+</svg>
+
+<!-- TARGET-LOCK BRACKETS (HUD lock-on for hovered element) -->
+<div id="lock-brackets" aria-hidden="true">
+  <div class="lock-bracket tl"></div>
+  <div class="lock-bracket tr"></div>
+  <div class="lock-bracket bl"></div>
+  <div class="lock-bracket br"></div>
+  <div id="lock-label">Scanning</div>
+</div>
+
+<nav>
+  <div class="nav-logo">sachin.v // ai_engineer</div>
+  <div class="nav-links">
+    <a href="#experience">experience</a>
+    <a href="#skills">stack</a>
+    <a href="#projects">projects</a>
+    <a href="#contact">contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home" style="padding:0; scroll-margin-top: 0;">
+  <div class="hero-left">
+    <div class="hero-tag">AI Engineer · 5+ years</div>
+    <h1 class="hero-name">
+      <span class="line glitch" data-text="Sachin">Sachin</span>
+      <span class="line glitch" data-text="Vishwakarma">Vishwakarma</span>
+    </h1>
+    <p class="hero-title">Building systems that <span>think at scale</span></p>
+    <div id="typewriter"></div>
+    <p class="hero-desc">
+      Production ML, computer vision, and Generative AI — from model training to serving millions of inferences. I work at the intersection of intelligent systems and reliable infrastructure.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#experience" class="btn-ghost">see the work ↓</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <canvas id="pipeline-canvas" role="img" aria-label="Animated diagram of an ML pipeline: data ingest, preprocessing, model training with PyTorch and TensorFlow, ONNX export, gRPC serving on Kubernetes, inference, and a GenAI layer using the OpenAI API."></canvas>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <div class="section-label reveal">career</div>
+  <h2 class="section-title reveal reveal-delay-1">Where I've built things</h2>
+  <div class="exp-list">
+
+    <div class="exp-item reveal reveal-delay-1">
+      <div class="exp-meta">
+        <div class="exp-period">Jul 2024 — present</div>
+        <h3 class="exp-company">NIQ</h3>
+        <div class="exp-location">Pune, India</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">AI Engineer</div>
+        <ul class="exp-bullets">
+          <li>Built a <strong>GenAI pipeline</strong> generating product descriptions from images using OpenAI APIs, improving annotation quality via Elasticsearch integration.</li>
+          <li>Deployed computer vision models with <strong>ONNX Runtime + gRPC on Kubernetes</strong>, reducing inference time at production scale.</li>
+          <li>Designed a <strong>large-scale ingestion pipeline</strong> processing 500K–800K SKUs from external systems into the Image Recognition Platform.</li>
+          <li>Implemented <strong>MLOps workflows</strong> for training, batch inference, deployment, and scalable model serving.</li>
+          <li>Developed algorithms to detect <strong>SKU barcode splits/merges</strong> and create new SKU relationships during ingestion.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal reveal-delay-2">
+      <div class="exp-meta">
+        <div class="exp-period">May 2023 — Jul 2024</div>
+        <h3 class="exp-company">Tata Consultancy Services</h3>
+        <div class="exp-location">Pune, India</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">Machine Learning Engineer</div>
+        <ul class="exp-bullets">
+          <li>Facilitated model training workflows on <strong>Azure Cloud</strong>, managing deployment and version control of production ML models.</li>
+          <li>Optimized backend performance and generated stakeholder reports using Python, improving decision-making pipelines.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal reveal-delay-3">
+      <div class="exp-meta">
+        <div class="exp-period">Jan 2021 — Apr 2023</div>
+        <h3 class="exp-company">Infosys</h3>
+        <div class="exp-location">Pune, India</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-role">ML Engineer</div>
+        <ul class="exp-bullets">
+          <li>Built end-to-end <strong>ML pipelines</strong> with NLP-based classification (SVM), achieving <strong>92% accuracy</strong> in ticket assignment prediction.</li>
+          <li>Managed data ingestion, pre-processing, and model training pipelines at scale.</li>
+          <li>Led automation team — received <strong>3× Insta Award</strong> for successful POC delivery and team leadership.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-label reveal">stack</div>
+  <h2 class="section-title reveal reveal-delay-1">What I work with</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-card-title">AI / ML</div>
+      <div class="skill-tags">
+        <span class="skill-tag">LLMs</span><span class="skill-tag">RAG</span>
+        <span class="skill-tag">Computer Vision</span><span class="skill-tag">NLP</span>
+        <span class="skill-tag">Agentic AI</span><span class="skill-tag">Embeddings</span>
+        <span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Semantic Search</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <div class="skill-card-title">Frameworks</div>
+      <div class="skill-tags">
+        <span class="skill-tag">PyTorch</span><span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span>
+        <span class="skill-tag">Hugging Face</span><span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">FastAPI</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-3">
+      <div class="skill-card-title">MLOps & Infra</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span>
+        <span class="skill-tag">ONNX Runtime</span><span class="skill-tag">gRPC</span>
+        <span class="skill-tag">CI/CD</span><span class="skill-tag">GitHub Actions</span>
+        <span class="skill-tag">Azure ML</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-4">
+      <div class="skill-card-title">Data & Search</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Elasticsearch</span><span class="skill-tag">FAISS</span>
+        <span class="skill-tag">Chroma</span><span class="skill-tag">Polars</span>
+        <span class="skill-tag">Pandas</span><span class="skill-tag">SQL</span>
+        <span class="skill-tag">Data Pipelines</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-1">
+      <div class="skill-card-title">LLM Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">OpenAI API</span><span class="skill-tag">Azure OpenAI</span>
+        <span class="skill-tag">Ollama</span><span class="skill-tag">Open-Source LLMs</span>
+      </div>
+    </div>
+    <div class="skill-card reveal reveal-delay-2">
+      <div class="skill-card-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+        <span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <div class="section-label reveal">projects</div>
+  <h2 class="section-title reveal reveal-delay-1">Things I've shipped</h2>
+  <div class="projects-grid">
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-tag">computer vision · mlops</div>
+      <div class="project-name">Reference Image Selection System</div>
+      <div class="project-desc">End-to-end platform for automatically selecting the best reference image from millions of barcode-linked product images. Production-grade autoscaling, intelligent ranking based on image source, classification, and business rules.</div>
+      <div class="project-stack">
+        <span class="stack-pill">ONNX Runtime</span><span class="stack-pill">gRPC</span>
+        <span class="stack-pill">Kubernetes</span><span class="stack-pill">Python</span>
+      </div>
+      <div class="project-links"><span class="project-badge">Proprietary — built at NIQ</span></div>
+    </div>
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-tag">genai · backend</div>
+      <div class="project-name">Product Description Generator</div>
+      <div class="project-desc">Generative AI solution that creates structured product descriptions from images and prompts using OpenAI APIs, integrated with Elasticsearch to improve annotation and search quality at scale.</div>
+      <div class="project-stack">
+        <span class="stack-pill">OpenAI</span><span class="stack-pill">Elasticsearch</span>
+        <span class="stack-pill">FastAPI</span><span class="stack-pill">Docker</span>
+      </div>
+      <div class="project-links"><span class="project-badge">Proprietary — built at NIQ</span></div>
+    </div>
+    <div class="project-card reveal reveal-delay-3">
+      <div class="project-tag">nlp · automation</div>
+      <div class="project-name">Ticket Assignment Classifier</div>
+      <div class="project-desc">ML pipeline using SVM-based NLP to predict the correct assignment group for IT tickets with 92% accuracy, reducing manual routing overhead and improving resolution speed.</div>
+      <div class="project-stack">
+        <span class="stack-pill">Scikit-learn</span><span class="stack-pill">SVM</span>
+        <span class="stack-pill">Python</span><span class="stack-pill">NLP</span>
+      </div>
+      <!-- TODO: replace # with your real repo URL -->
+      <div class="project-links"><a href="#" class="project-link">View code ↗</a></div>
+    </div>
+    <div class="project-card reveal reveal-delay-4">
+      <div class="project-tag">scraping · nlp</div>
+      <div class="project-name">YouTube Sentiment Analyzer</div>
+      <div class="project-desc">Single-page app that scrapes YouTube data and runs sentiment analysis on 200+ comments using an NLP model — built to explore opinion mining at the intersection of social data and language models.</div>
+      <div class="project-stack">
+        <span class="stack-pill">Python</span><span class="stack-pill">Selenium</span>
+        <span class="stack-pill">NLP</span>
+      </div>
+      <!-- TODO: replace # with your real repo URL -->
+      <div class="project-links"><a href="#" class="project-link">View code ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-label reveal">contact</div>
+  <h2 class="section-title reveal reveal-delay-1">Let's build something</h2>
+  <div class="contact-inner reveal reveal-delay-2">
+    <p style="color: var(--muted); font-size: 15px; margin-bottom: 0.5rem;">
+      Open to roles in AI engineering, ML systems, and production GenAI. Based in Pune — open to remote.
+    </p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:sachinv1004@gmail.com">
+        <div><span class="contact-link-label">email</span><span class="contact-link-val">sachinv1004@gmail.com</span></div>
+        <span class="contact-link-icon">↗</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/sachin-vishwakarma-a9242222a" target="_blank" rel="noopener">
+        <div><span class="contact-link-label">linkedin</span><span class="contact-link-val">sachin-vishwakarma</span></div>
+        <span class="contact-link-icon">↗</span>
+      </a>
+      <a class="contact-link" href="tel:+918349796351">
+        <div><span class="contact-link-label">phone</span><span class="contact-link-val">+91 834 979 6351</span></div>
+        <span class="contact-link-icon">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© <span id="year">2026</span> Sachin Vishwakarma</p>
+  <p>AI Engineer · Pune, India</p>
+</footer>
+
+<script>
+// ─── CUSTOM CURSOR ───────────────────────────────────────────
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.body.classList.add('cursor-active');
+}
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+function animateCursor() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  if (cursor) { cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; }
+  if (ring) { ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; }
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// ─── FOOTER YEAR ────────────────────────────────────────────
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ─── SCROLL PROGRESS ─────────────────────────────────────────
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  if (scrollBar) scrollBar.style.transform = `scaleX(${pct})`;
+});
+
+// ─── SCROLL REVEAL ────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── TYPEWRITER ───────────────────────────────────────────────
+const phrases = [
+  '> building production ML systems...',
+  '> deploying at kubernetes scale...',
+  '> engineering with LLMs + RAG...',
+  '> shipping agentic AI pipelines...',
+  '> optimizing inference with ONNX...',
+];
+let pi = 0, ci = 0, deleting = false, tw = document.getElementById('typewriter');
+function typeLoop() {
+  if (!tw) return;
+  const phrase = phrases[pi];
+  if (!deleting) {
+    tw.textContent = phrase.slice(0, ci + 1);
+    ci++;
+    if (ci === phrase.length) { deleting = true; setTimeout(typeLoop, 2200); return; }
+    setTimeout(typeLoop, 48 + Math.random() * 30);
+  } else {
+    tw.textContent = phrase.slice(0, ci - 1);
+    ci--;
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(typeLoop, 400); return; }
+    setTimeout(typeLoop, 22);
+  }
+}
+setTimeout(typeLoop, 2000);
+
+// ─── PARTICLES BACKGROUND ─────────────────────────────────────
+const pc = document.getElementById('particles-canvas');
+if (pc) {
+  const pctx = pc.getContext('2d');
+  let W, H, pts = [];
+  function resizePC() {
+    W = pc.width = window.innerWidth;
+    H = pc.height = window.innerHeight;
+  }
+  resizePC();
+  window.addEventListener('resize', resizePC);
+
+  for (let i = 0; i < 80; i++) {
+    pts.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      r: 1 + Math.random() * 1.5,
+      opacity: 0.2 + Math.random() * 0.5
+    });
+  }
+
+  function drawParticles() {
+    W = pc.width; H = pc.height;
+    pctx.clearRect(0, 0, W, H);
+    pts.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+      pctx.beginPath();
+      pctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      pctx.fillStyle = `rgba(0,229,204,${p.opacity})`;
+      pctx.fill();
+    });
+
+    // Connect nearby particles
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 120) {
+          pctx.beginPath();
+          pctx.moveTo(pts[i].x, pts[i].y);
+          pctx.lineTo(pts[j].x, pts[j].y);
+          pctx.strokeStyle = `rgba(0,229,204,${0.08 * (1 - dist/120)})`;
+          pctx.lineWidth = 0.5;
+          pctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+}
+
+// ─── SKILL CARD SPOTLIGHT ────────────────────────────────────
+document.querySelectorAll('.skill-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+    card.style.setProperty('--mx', x + '%');
+    card.style.setProperty('--my', y + '%');
+  });
+});
+
+// ─── PIPELINE CANVAS ─────────────────────────────────────────
+const canvas = document.getElementById('pipeline-canvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  const CYAN = '#00E5CC'; const MUTED = '#6B7590';
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = Math.min(480, rect.width - 32);
+    canvas.height = 420;
+  }
+  resize();
+
+  const nodes = [
+    { label: 'data ingest',    sublabel: 'pipeline',      x: 0.15, y: 0.18 },
+    { label: 'preprocessing',  sublabel: 'transform',     x: 0.5,  y: 0.12 },
+    { label: 'model train',    sublabel: 'PyTorch / TF',  x: 0.82, y: 0.22 },
+    { label: 'ONNX export',    sublabel: 'optimize',      x: 0.85, y: 0.5  },
+    { label: 'gRPC serve',     sublabel: 'Kubernetes',    x: 0.6,  y: 0.75 },
+    { label: 'inference',      sublabel: 'low latency',   x: 0.25, y: 0.82 },
+    { label: 'GenAI layer',    sublabel: 'OpenAI API',    x: 0.12, y: 0.52 },
+  ];
+  const edges = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0],[1,6],[3,5]];
+
+  const particles = [];
+  for (let i = 0; i < 22; i++) {
+    const edgeIdx = Math.floor(Math.random() * edges.length);
+    particles.push({ edge: edgeIdx, t: Math.random(), speed: 0.003 + Math.random() * 0.004, size: 2 + Math.random() * 2, opacity: 0.5 + Math.random() * 0.5 });
+  }
+
+  let tick = 0;
+  function draw() {
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    const pos = nodes.map(n => ({ x: n.x * W, y: n.y * H }));
+
+    edges.forEach(([a, b]) => {
+      ctx.save();
+      ctx.setLineDash([4, 8]);
+      ctx.lineDashOffset = -tick * 0.5;
+      ctx.beginPath();
+      ctx.moveTo(pos[a].x, pos[a].y);
+      ctx.lineTo(pos[b].x, pos[b].y);
+      ctx.strokeStyle = 'rgba(0,229,204,0.12)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.restore();
+    });
+
+    particles.forEach(p => {
+      const [a, b] = edges[p.edge];
+      const x = pos[a].x + (pos[b].x - pos[a].x) * p.t;
+      const y = pos[a].y + (pos[b].y - pos[a].y) * p.t;
+
+      const grad = ctx.createRadialGradient(x, y, 0, x, y, p.size * 5);
+      grad.addColorStop(0, `rgba(0,229,204,${p.opacity})`);
+      grad.addColorStop(0.4, `rgba(0,229,204,${p.opacity * 0.3})`);
+      grad.addColorStop(1, 'rgba(0,229,204,0)');
+      ctx.beginPath();
+      ctx.arc(x, y, p.size * 5, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(x, y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = CYAN;
+      ctx.fill();
+
+      p.t += p.speed;
+      if (p.t > 1) p.t = 0;
+    });
+
+    nodes.forEach((n, i) => {
+      const { x, y } = pos[i];
+      const pulse = 0.5 + 0.5 * Math.sin(tick * 0.035 + i * 1.1);
+      const r = 38;
+
+      const outerR = r + 8 + pulse * 8;
+      const glowGrad = ctx.createRadialGradient(x, y, r, x, y, outerR + 10);
+      glowGrad.addColorStop(0, `rgba(0,229,204,${0.15 * pulse})`);
+      glowGrad.addColorStop(1, 'rgba(0,229,204,0)');
+      ctx.beginPath();
+      ctx.arc(x, y, outerR + 10, 0, Math.PI * 2);
+      ctx.fillStyle = glowGrad;
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = '#0F1420';
+      ctx.fill();
+      ctx.strokeStyle = `rgba(0,229,204,${0.4 + pulse * 0.3})`;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(x, y, r - 6, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(0,229,204,${0.08 + pulse * 0.05})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.fillStyle = CYAN;
+      ctx.font = `500 10px 'JetBrains Mono', monospace`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, x, y - 6);
+
+      ctx.fillStyle = MUTED;
+      ctx.font = `400 9px 'JetBrains Mono', monospace`;
+      ctx.fillText(n.sublabel, x, y + 8);
+    });
+
+    tick++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+  window.addEventListener('resize', resize);
+}
+
+// ─── COMPANION SPRITE (Animated Limbs + Physics) ───
+(function initBuddy() {
+  const buddy = document.getElementById('buddy');
+  const pupilL = document.getElementById('buddy-pupil-l');
+  const pupilR = document.getElementById('buddy-pupil-r');
+  const lidL = document.getElementById('buddy-lid-l');
+  const lidR = document.getElementById('buddy-lid-r');
+  
+  // New Limb Elements
+  const armL = document.getElementById('buddy-arm-l');
+  const armR = document.getElementById('buddy-arm-r');
+  const legL = document.getElementById('buddy-leg-l');
+  const legR = document.getElementById('buddy-leg-r');
+  
+  if (!buddy) return;
+
+  let tx = window.innerWidth / 2, ty = window.innerHeight / 2; 
+  let bx = tx, by = ty;                                         
+  let hasPointer = false;
+  let lastAngle = 0;
+  const MARGIN = 26;
+
+  function setTarget(x, y) {
+    tx = Math.max(MARGIN, Math.min(window.innerWidth - MARGIN, x));
+    ty = Math.max(MARGIN + 60, Math.min(window.innerHeight - MARGIN, y));
+    hasPointer = true;
+  }
+
+  window.addEventListener('mousemove', e => setTarget(e.clientX, e.clientY));
+  window.addEventListener('touchmove', e => {
+    if (e.touches[0]) setTarget(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });
+  window.addEventListener('touchstart', e => {
+    if (e.touches[0]) setTarget(e.touches[0].clientX, e.touches[0].clientY);
+  }, { passive: true });
+
+  // ─── Scan target tracking (Laser Scan-Lock + Target-Lock Brackets) ───
+  const scanBeam = document.getElementById('scan-beam');
+  const scanBeamLineL = document.getElementById('scan-beam-line-l');
+  const scanBeamLineR = document.getElementById('scan-beam-line-r');
+  const lockBrackets = document.getElementById('lock-brackets');
+  const lockLabel = document.getElementById('lock-label');
+  const bracketEls = {
+    tl: lockBrackets.querySelector('.tl'),
+    tr: lockBrackets.querySelector('.tr'),
+    bl: lockBrackets.querySelector('.bl'),
+    br: lockBrackets.querySelector('.br'),
+  };
+  const SCAN_LABELS = ['SCANNING', 'ANALYZING', 'MATCH: 97%', 'IDENTIFIED'];
+  let scanTarget = null;
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest('a, button, .skill-tag, .stack-pill, .project-card, .exp-item');
+    if (el) startScan(el);
+  });
+  document.addEventListener('mouseout', e => {
+    const el = e.target.closest('a, button, .skill-tag, .stack-pill, .project-card, .exp-item');
+    if (el) endScan();
+  });
+
+  // Touch equivalent — mouseover/mouseout mostly don't fire on real touchscreens,
+  // so track the element under the finger directly via touchstart/touchmove.
+  function elFromTouch(e) {
+    const t = e.touches[0];
+    if (!t) return null;
+    const hit = document.elementFromPoint(t.clientX, t.clientY);
+    return hit ? hit.closest('a, button, .skill-tag, .stack-pill, .project-card, .exp-item') : null;
+  }
+  document.addEventListener('touchstart', e => {
+    const el = elFromTouch(e);
+    if (el) startScan(el); else endScan();
+  }, { passive: true });
+  document.addEventListener('touchmove', e => {
+    const el = elFromTouch(e);
+    if (el) startScan(el); else endScan();
+  }, { passive: true });
+  document.addEventListener('touchend', endScan, { passive: true });
+  document.addEventListener('touchcancel', endScan, { passive: true });
+
+  function startScan(el) {
+    if (scanTarget !== el) {
+      lockLabel.textContent = SCAN_LABELS[Math.floor(Math.random() * SCAN_LABELS.length)];
+    }
+    scanTarget = el;
+    buddy.classList.add('excited');
+    scanBeam.classList.add('active');
+    lockBrackets.classList.add('active');
+  }
+  function endScan() {
+    scanTarget = null;
+    buddy.classList.remove('excited');
+    scanBeam.classList.remove('active');
+    lockBrackets.classList.remove('active');
+  }
+
+  function blink() {
+    lidL.setAttribute('height', 9);
+    lidR.setAttribute('height', 9);
+    setTimeout(() => { lidL.setAttribute('height', 0); lidR.setAttribute('height', 0); }, 120);
+    setTimeout(blink, 2400 + Math.random() * 2800);
+  }
+  setTimeout(blink, 1500);
+
+  let t = 0;
+  function animate() {
+    // While actively scanning, hover a bit above the target instead of
+    // sitting exactly on the cursor — otherwise the robot's own body
+    // covers the brackets/beam it's supposed to be showing.
+    if (scanTarget && scanTarget.isConnected) {
+      const r = scanTarget.getBoundingClientRect();
+      setTarget(r.left + r.width / 2, r.top - 55);
+    }
+
+    bx += (tx - bx) * 0.14;
+    by += (ty - by) * 0.14;
+
+    const dx = tx - bx, dy = ty - by;
+    const speed = Math.hypot(dx, dy);
+    if (speed > 1.2) lastAngle = Math.atan2(dy, dx);
+
+    t += 0.05;
+    
+    // Core Body Physics
+    const bob = Math.sin(t) * 3;
+    const tilt = Math.max(-15, Math.min(15, dx * 0.15));
+    const squish = Math.min(1.15, 1 + speed / 300);
+
+    buddy.style.transform =
+      `translate(${bx}px, ${by - 30 + bob}px) translate(-50%,-50%) rotate(${tilt}deg) scale(${1/squish}, ${squish})`;
+    buddy.style.opacity = hasPointer ? '1' : '0';
+
+    // Eyes tracking
+    const lookX = Math.cos(lastAngle) * 2;
+    const lookY = Math.sin(lastAngle) * 2;
+    pupilL.setAttribute('cx', 13 + lookX);
+    pupilL.setAttribute('cy', 21 + lookY);
+    pupilR.setAttribute('cx', 27 + lookX);
+    pupilR.setAttribute('cy', 21 + lookY);
+
+    // Limb Physics (Idle swing + Drag resistance based on movement speed)
+    const idleArm = Math.sin(t * 1.5) * 8; 
+    const idleLeg = Math.cos(t * 2) * 12;
+    const dragSwing = Math.max(-45, Math.min(45, dx * 0.4)); // Limbs drag opposite to horizontal movement
+
+    if (armL) armL.style.transform = `rotate(${idleArm + dragSwing}deg)`;
+    if (armR) armR.style.transform = `rotate(${-idleArm + dragSwing}deg)`;
+    if (legL) legL.style.transform = `rotate(${idleLeg + dragSwing}deg)`;
+    if (legR) legR.style.transform = `rotate(${-idleLeg + dragSwing}deg)`;
+
+    // Update scan beam + lock brackets to track the current target every frame
+    if (scanTarget && scanTarget.isConnected) {
+      const rect = scanTarget.getBoundingClientRect();
+
+      // Beam origins roughly at buddy's two eyes (~±6px either side, ~8px above its anchor)
+      const eyeY = by - 30 + bob - 8;
+      const eyeLX = bx - 6, eyeRX = bx + 6;
+
+      scanBeamLineL.setAttribute('x1', eyeLX);
+      scanBeamLineL.setAttribute('y1', eyeY);
+      scanBeamLineL.setAttribute('x2', rect.left);
+      scanBeamLineL.setAttribute('y2', rect.top);
+
+      scanBeamLineR.setAttribute('x1', eyeRX);
+      scanBeamLineR.setAttribute('y1', eyeY);
+      scanBeamLineR.setAttribute('x2', rect.right);
+      scanBeamLineR.setAttribute('y2', rect.bottom);
+
+      const pad = 6;
+      bracketEls.tl.style.transform = `translate(${rect.left - pad}px, ${rect.top - pad}px)`;
+      bracketEls.tr.style.transform = `translate(${rect.right + pad - 16}px, ${rect.top - pad}px)`;
+      bracketEls.bl.style.transform = `translate(${rect.left - pad}px, ${rect.bottom + pad - 16}px)`;
+      bracketEls.br.style.transform = `translate(${rect.right + pad - 16}px, ${rect.bottom + pad - 16}px)`;
+      lockLabel.style.transform = `translate(${rect.left}px, ${rect.top - pad - 12}px)`;
+    } else if (scanTarget && !scanTarget.isConnected) {
+      // Target left the DOM (e.g. reveal re-render) — clear gracefully
+      scanTarget = null;
+      scanBeam.classList.remove('active');
+      lockBrackets.classList.remove('active');
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+</script>
+</body>
+</html>

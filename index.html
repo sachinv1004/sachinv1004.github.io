@@ -34,7 +34,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap&font-display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -588,6 +588,20 @@ footer p {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ANIMATION SAFETY NET — force final states after all hero animations complete (3s total)
+   Prevents elements staying invisible on desktop if animation fill-mode fails */
+@keyframes ensureVisible { to { opacity: 1; transform: none; } }
+.hero-tag,
+.hero-title,
+.hero-desc,
+.hero-actions,
+#typewriter {
+  animation-fill-mode: forwards !important;
+}
+.hero-name .line {
+  animation-fill-mode: forwards !important;
+}
 </style>
 </head>
 <body>
@@ -889,6 +903,22 @@ footer p {
 </footer>
 
 <script>
+// ─── ANIMATION FALLBACK ─────────────────────────────────────
+// On desktop, CSS animations with delays + font loading can race, leaving
+// elements stuck at opacity:0. Force final state after the longest delay (1.7s + 0.7s = 2.4s).
+setTimeout(() => {
+  const heroEls = document.querySelectorAll(
+    '.hero-tag, .hero-title, .hero-desc, .hero-actions, #typewriter, .hero-name .line'
+  );
+  heroEls.forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+  // Also ensure the right panel (pipeline canvas) is visible
+  const heroRight = document.querySelector('.hero-right');
+  if (heroRight) heroRight.style.opacity = '1';
+}, 2800);
+
 // ─── CUSTOM CURSOR ───────────────────────────────────────────
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursor-ring');
